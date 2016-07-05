@@ -54,6 +54,15 @@ void calculateFOURHUNDREDFOURplusONEHUNDREDNINETYSIX(void){
 	assert(strcmp(result, ostring1)==0); //Comparing the expected result with the result obtained from add function.
 }
 
+void calculateFIVEHUNDREDFIFTYFIVEplusONETHOUSANDONEHUNDREDELEVEN(void){
+	char ostring1[MAX] = "DLV"; 
+	char ostring2[MAX] = "MCXI";   	
+	char result[MAX]= "MDCLXVI";        
+	add(ostring1,ostring2);     	     //The result is returned in ostring1
+	assert(strcmp(result, ostring1)==0); //Comparing the expected result with the result obtained from add function.
+}
+
+
 int main()
 {	
 	calculateoneplusone();
