@@ -9,6 +9,20 @@ char* subwith[]={"IIII","VIIII","XXXX","LXXXX","CCCC","DCCCC"};
 char* groupfrom[]= {"IIIII","VV","XXXXX","LL","CCCCC","DD"};
 char* groupwith[]={"V","X","L","C","D","M"};
 
+char* Cancel(char* originalstring1,char* originalstring2)
+{
+    int length1=strlen(originalstring1); //Length of First Numeral
+    int length2=strlen(originalstring2); //Length of Second Numeral	
+    int length=length1-length2; //Length of the New Numeral after finding difference
+    char temp[4096]="0";
+    int i;
+    for(i=0;i<length;i++)
+    { temp[i]='I'; //Load "I" onto temp 
+    }
+    strcpy(originalstring1, temp);
+    return originalstring1; //Copy into originalstring and return
+    
+}
 char* Group(char* groupfrom[],char* groupwith[],char* originalstring) //To group IIIII->V, VV-->X, XXXXX->L etc.
 {
     int j;    
@@ -83,16 +97,15 @@ void Replace(char * o_string, char * s_string, char * r_string)
  
 char* add(char* ostring1, char* ostring2) {		
     ReplaceSubtractives(subwith,subfrom,ostring1); //Replace Subtractives for the first Roman numeral (IV-->IIII) 
-
-    ReplaceSubtractives(subwith,subfrom,ostring2); //Replace Subtractives for the second Roman numeral (V)
-
+    ReplaceSubtractives(subwith,subfrom,ostring2); //Replace Subtractives for the second Roman numeral 
     strcat(ostring1,ostring2); //Concatenate the two numerals(IIII+V=IIIIV)
-
     Sort(ostring1);  //Sort in Descending order(VIIII)
-
     Group(groupwith,groupfrom,ostring1); // Grouping of numerals eg: XXXXX=L, IIIII=V etc.
-
     ReplaceSubtractives(subfrom,subwith,ostring1); //Replace Reverse Subtractives (VIIII-->IX)
-
     return ostring1;
+}
+char* subtract(char* ostring1, char* ostring2) {	
+    Cancel(ostring1,ostring2);//Cancel out the common I's
+    return ostring1;
+
 }
