@@ -18,36 +18,35 @@ char* Group(char* groupfrom[],char* groupwith[],char* originalstring) //To group
     return originalstring;
 }
 
- char* Sort(char* originalstring)
+char* Sort(char* originalstring)
  {
-    char str[4096] = "MDCLXVI" ;
-    char temp[4096]="0";
-    int i,j,count[7];
-    int length =strlen(originalstring);
+    char str[MAX] = "MDCLXVI" ; //String to specify the order of Roman Numerals M>D>C>L>X>V>I
+    char temp[MAX]="0";
+    int i,j,count[ROMANORDER];
+    int length =strlen(originalstring); 
     
-    
-
-    for( i=0; i<7; i++)
+    //Count[i] keeps a record of the number of times each ROMAN numeral appears in the original string
+    for( i=0; i<ROMANORDER; i++)
     {   
         for( j=0; j<length ;j++)
         {
-            if(originalstring[j]== str[i])
-            {count[i]++;
+            if(originalstring[j]== str[i]) 
+            {count[i]++; //For example, Each time M is found, count[0] is incremented.
             }
         }
     }
     j=0;
-    for ( i=0;i<7 ;i++)
+    for ( i=0;i<7 ;i++) // Writing down in ascending order based on count[i]
     { 
             while(count[i])
-        {   temp[j++]= str[i];
+        {   temp[j++]= str[i]; 
             count[i]--;
         }
     }
     strcpy(originalstring, temp);
+  
     return originalstring;
  }
-
 
 
 char* ReplaceSubtractives(char* subfrom[],char* subwith[],char* originalstring) //To replace Subtractives (IV-->IIII and vice versa)
@@ -84,16 +83,16 @@ void Replace(char * o_string, char * s_string, char * r_string)
  
 char* add(char* ostring1, char* ostring2) {		
     ReplaceSubtractives(subwith,subfrom,ostring1); //Replace Subtractives for the first Roman numeral (IV-->IIII) 
-puts(ostring1);
+
     ReplaceSubtractives(subwith,subfrom,ostring2); //Replace Subtractives for the second Roman numeral (V)
-puts(ostring2);
+
     strcat(ostring1,ostring2); //Concatenate the two numerals(IIII+V=IIIIV)
-puts(ostring1);
+
     Sort(ostring1);  //Sort in Descending order(VIIII)
-puts(ostring1);
+
     Group(groupwith,groupfrom,ostring1); // Grouping of numerals eg: XXXXX=L, IIIII=V etc.
-puts(ostring1);
+
     ReplaceSubtractives(subfrom,subwith,ostring1); //Replace Reverse Subtractives (VIIII-->IX)
-puts(ostring1);
+
     return ostring1;
 }
