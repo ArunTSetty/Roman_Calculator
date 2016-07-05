@@ -14,10 +14,18 @@ void calculateoneplusone(void){
 	assert(strcmp(result, ostring1)==0); //Comparing the expected result with the result obtained from add function.
 }
 
+void calculatetwoplusone(void){
+	char ostring1[] = "II";
+	char ostring2[] = "I";
+	char result[]="III";
+	add(ostring1,ostring2);     	     //The result is returned in ostring1
+	assert(strcmp(result, ostring1)==0); //Comparing the expected result with the result obtained from add function.
+
 int main()
 {	
 	calculateoneplusone();
-	printf("/n Test passed"); 
+	calculatetwoplusone();
+	printf("/n Test passed");           
 	return 0;
 }
 
