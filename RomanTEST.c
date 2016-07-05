@@ -71,6 +71,7 @@ int main()
 	calculatefourplusfive();
 	calculatefortynineplusfiftyone();
 	calculateFOURHUNDREDFOURplusONEHUNDREDNINETYSIX();
+	calculateFIVEHUNDREDFIFTYFIVEplusONETHOUSANDONEHUNDREDELEVEN();
 	printf("Test passed");           
 	return 0;
 }
