@@ -20,12 +20,12 @@ void calculatetwoplusone(void){
 	char result[]="III";
 	add(ostring1,ostring2);     	     //The result is returned in ostring1
 	assert(strcmp(result, ostring1)==0); //Comparing the expected result with the result obtained from add function.
-
+}
 int main()
 {	
 	calculateoneplusone();
 	calculatetwoplusone();
-	printf("/n Test passed");           
+	printf("Test passed");           
 	return 0;
 }
 
