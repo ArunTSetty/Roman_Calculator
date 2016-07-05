@@ -104,8 +104,10 @@ char* add(char* ostring1, char* ostring2) {
     ReplaceSubtractives(subfrom,subwith,ostring1); //Replace Reverse Subtractives (VIIII-->IX)
     return ostring1;
 }
-char* subtract(char* ostring1, char* ostring2) {	
+char* subtract(char* ostring1, char* ostring2) {
+    ReplaceSubtractives(groupfrom,groupwith,ostring1); //Expand the first Roman Numeral such that it is expressed only in 'I'	
     Cancel(ostring1,ostring2);//Cancel out the common I's
+    ReplaceSubtractives(subfrom,subwith,ostring1); //Replace Reverse Subtractives (IIII-->IV)
     return ostring1;
 
 }
