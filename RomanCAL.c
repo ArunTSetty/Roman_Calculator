@@ -4,6 +4,7 @@
 #include <string.h>
 #define MAX 4096
 #define ROMANORDER 7
+#define SUBORDER 5
 char* subfrom[]= {"IV","IX","XL","XC","CD","CM"};
 char* subwith[]={"IIII","VIIII","XXXX","LXXXX","CCCC","DCCCC"};
 char* groupfrom[]= {"IIIII","VV","XXXXX","LL","CCCCC","DD"};
@@ -14,19 +15,19 @@ char* Cancel(char* originalstring1,char* originalstring2)
     int length1=strlen(originalstring1); //Length of First Numeral
     int length2=strlen(originalstring2); //Length of Second Numeral	
     int length=length1-length2; //Length of the New Numeral after finding difference
-    char temp[4096]="0";
+    char temp[MAX]="0";
     int i;
     for(i=0;i<length;i++)
-    { temp[i]='I'; //Load "I" onto temp 
+    { temp[i]='I'; //Load length number of "I"'s onto temp 
     }
     strcpy(originalstring1, temp);
-    return originalstring1; //Copy into originalstring and return
+    return originalstring1; //Copy into original string and return
     
 }
 char* Group(char* groupfrom[],char* groupwith[],char* originalstring) //To group IIIII->V, VV-->X, XXXXX->L etc.
 {
     int j;    
-    for (j=0;j<6;j++){
+    for (j=0;j<=SUBORDER;j++){
     Replace(originalstring, groupwith[j], groupfrom[j]);
     }
     return originalstring;
@@ -66,7 +67,7 @@ char* Sort(char* originalstring)
 char* ReplaceSubtractives(char* subfrom[],char* subwith[],char* originalstring) //To replace Subtractives (IV-->IIII and vice versa)
 {
     int j;    
-    for (j=5;j>-1;j--){
+    for (j=SUBORDER;j>-1;j--){
     Replace(originalstring, subwith[j], subfrom[j]);
     }
     return originalstring;
