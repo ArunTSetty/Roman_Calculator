@@ -95,6 +95,14 @@ void calculateONEHUNDREDSEVENTYFIVEminusNINETYNINE(void){
 	assert(strcmp(result, ostring1)==0); //Comparing the expected result with the result obtained from add function.
 }
 
+void calculateONETHOUSANDminusNINETYNINE(void){
+	char ostring1[MAX] = "M"; 
+	char ostring2[MAX] = "XCIX";   	
+	char result[MAX]= "CMI";        
+	subtract(ostring1,ostring2);     	     //The result is returned in ostring1
+	assert(strcmp(result, ostring1)==0); //Comparing the expected result with the result obtained from add function.
+}
+
 
 int main()
 {	
@@ -109,6 +117,7 @@ int main()
 	calculateFIVEminusONE();
 	calculateNINEminusFOUR();
 	calculateONEHUNDREDSEVENTYFIVEminusNINETYNINE();
+ 	calculateONETHOUSANDminusNINETYNINE();
 	printf("Test passed");           
 	return 0;
 }
